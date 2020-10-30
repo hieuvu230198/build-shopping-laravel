@@ -36,4 +36,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function getListUser() {
+        return User::orderByDesc('created_at')->paginate(config('constants.number_paginate'));
+    }
 }
